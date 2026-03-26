@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootstrap demo</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css"
+    />
+    <style>
+      /* Custom style for line numbers */
+      .hljs-ln-numbers {
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        text-align: center;
+        color: #666;
+        border-right: 1px solid #444;
+        vertical-align: top;
+        padding-right: 10px !important;
+      }
+      .hljs-ln-code {
+        padding-left: 15px !important;
+      }
+      pre {
+        margin: 0;
+      }
+      code {
+        font-family: "Fira Code", monospace;
+      }
+    </style>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+    <script>
+      hljs.highlightAll();
+      hljs.initLineNumbersOnLoad();
+    </script>
+  </head>
+  <body>
+    <div class="card mb-4 shadow-sm border-0 overflow-hidden">
+      <div
+        class="card-header bg-dark d-flex justify-content-between align-items-center py-2"
+      >
+        <span class="badge bg-secondary text-uppercase">server.js</span>
+        <div>
+          <button
+            class="btn btn-sm btn-outline-light me-2"
+            onclick="copyCode('codeBlock1')"
+          >
+            <i class="bi bi-clipboard"></i> Copy
+          </button>
+          <button
+            class="btn btn-sm btn-outline-info"
+            onclick="downloadCode('codeBlock1', 'server.js')"
+          >
+            <i class="bi bi-download"></i> Download
+          </button>
+        </div>
+      </div>
+      <div class="card-body p-0">
+        <pre><code id="codeBlock1" class="language-javascript">
+const http = require('http');
+
+const server = http.createServer((req, res) => {
+    res.writeHead(200, {'Content-Type': 'text/plain'});
+    res.end('System Online\n');
+});
+
+server.listen(8080);
+        </code></pre>
+      </div>
+    </div>
+
+    <script>
+              <div class="card mb-4 shadow-sm border-0 overflow-hidden">
+          <div class="card-header bg-dark d-flex justify-content-between align-items-center py-2">
+              <span class="badge bg-secondary text-uppercase">server.js</span>
+              <div>
+                  <button class="btn btn-sm btn-outline-light me-2" onclick="copyCode('codeBlock1')">
+                      <i class="bi bi-clipboard"></i> Copy
+                  </button>
+                  <button class="btn btn-sm btn-outline-info" onclick="downloadCode('codeBlock1', 'server.js')">
+                      <i class="bi bi-download"></i> Download
+                  </button>
+              </div>
+          </div>
+          <div class="card-body p-0">
+              <pre><code id="codeBlock1" class="language-javascript">
+      const http = require('http');
+
+      const server = http.createServer((req, res) => {
+          res.writeHead(200, {'Content-Type': 'text/plain'});
+          res.end('System Online\n');
+      });
+
+      server.listen(8080);
+              </code></pre>
+          </div>
+      </div>
+    </script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

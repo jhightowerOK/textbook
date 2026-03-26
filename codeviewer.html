@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bootstrap 5 Code Viewer</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css"
+    />
+
+    <style>
+      .code-container {
+        position: relative;
+        border-radius: 8px;
+        overflow: hidden;
+        background-color: #282c34;
+      }
+      .code-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.5rem 1rem;
+        background: #212529;
+        color: #adb5bd;
+        font-size: 0.85rem;
+      }
+      pre {
+        margin-bottom: 0;
+      }
+      code {
+        font-family: "Fira Code", "Courier New", Courier, monospace;
+        padding: 1.5rem !important;
+      }
+      /* Custom Line Numbering (Optional tweak) */
+      .hljs-ln-numbers {
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        text-align: center;
+        color: #495057;
+        border-right: 1px solid #3e4451;
+        vertical-align: top;
+        padding-right: 15px !important;
+      }
+      .hljs-ln-code {
+        padding-left: 15px !important;
+      }
+    </style>
+  </head>
+  <body class="bg-light p-5">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="code-container shadow">
+            <div
+              class="code-header d-flex justify-content-between align-items-center px-3 py-2 bg-dark text-secondary"
+            >
+              <div class="d-flex align-items-center">
+                <i class="bi bi-file-earmark-code me-2"></i>
+                <span class="small fw-semibold">index.js</span>
+              </div>
+              <div class="btn-group">
+                <button
+                  class="btn btn-sm btn-outline-light border-0"
+                  onclick="copyCode()"
+                  title="Copy Code"
+                >
+                  <i class="bi bi-clipboard"></i>
+                </button>
+                <button
+                  class="btn btn-sm btn-outline-light border-0"
+                  onclick="downloadCode()"
+                  title="Download File"
+                >
+                  <i class="bi bi-download"></i>
+                </button>
+              </div>
+            </div>
+            <pre><code id="codeBlock" class="language-javascript">
+function greetUser(name) {
+    console.log(`Hello, ${name}!`);
+    const date = new Date();
+    return `Today is ${date.toDateString()}`;
+}
+
+// Example usage:
+console.log(greetUser('Gemini'));
+                </code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+
+    <script>
+      // Initialize Highlighting
+      hljs.highlightAll();
+      hljs.initLineNumbersOnLoad();
+
+      // Copy to Clipboard Functionality
+      function copyCode() {
+        const codeText = document.getElementById("codeBlock").innerText;
+        navigator.clipboard.writeText(codeText).then(() => {
+          alert("Code copied to clipboard!");
+        });
+      }
+
+      // Download Functionality
+      function downloadCode() {
+        const codeText = document.getElementById("codeBlock").innerText;
+        const blob = new Blob([codeText], { type: "text/javascript" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "script.js";
+        a.click();
+        URL.revokeObjectURL(url);
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css"
+    />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+    <script>
+      hljs.highlightAll();
+    </script>
+  </head>
+  <body>
+    <div class="container mt-5">
+      <h3>Example: Node.js Express Route</h3>
+      <pre><code class="language-javascript">
+const express = require('express');
+const app = express();
+
+app.get('/', (req, res) => {
+    res.send('Hello from the Server!');
+});
+
+app.listen(3000, () => console.log('Server running on port 3000'));
+    </code></pre>
+    </div>
+  </body>
+</html>
